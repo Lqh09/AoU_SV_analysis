@@ -21,19 +21,19 @@ Input<br>
 
 ### SV-eQTL ###
 **Cohort:**  
-  Matched DNA-seq and RNA-seq data from 731 individuals, representing 26 globally distributed populations across five continents.
+Matched DNA-seq and RNA-seq data from 731 individuals, representing 26 globally distributed populations across five continents.
 
 **Genotyping:**  
-  SVs were genotyped and imputed into 1KG samples to ensure consistent representation across populations.
+SVs were genotyped and imputed into 1KG samples to ensure consistent representation across populations.
 
-- **Expression data:**  
-  The expression file `inverse_normal_TMM.filtered.TSS.MAGE.v1.0.bed.gz` contains TMM-normalized expression values transformed to a normal distribution.
+**Expression data:**  
+The expression file `inverse_normal_TMM.filtered.TSS.MAGE.v1.0.bed.gz` contains TMM-normalized expression values transformed to a normal distribution.
 
-- **Covariates:**  
-  The corresponding covariate file is `eQTL_covariates.tab.gz`.
+**Covariates:**  
+The corresponding covariate file is `eQTL_covariates.tab.gz`.
 
-- **Data source:**  
-  Both expression and covariate files are available from the MAGE project([https://github.com/mccoy-lab/MAGE](https://github.com/mccoy-lab/MAGE))  
+**Data source:**  
+Both expression and covariate files are available from the MAGE project([https://github.com/mccoy-lab/MAGE](https://github.com/mccoy-lab/MAGE))  
 
 Sample 
 
