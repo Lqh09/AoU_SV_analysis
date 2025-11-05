@@ -14,7 +14,6 @@ Usage
 ```bash
 python plot_cadd_sv.py   --cadd SV_CADD.score.bed   --summary SV_summary.txt   --known_ids LR_match_IDs   --output Cadd_SV_sample_summary.png
 ```
-Input<br>
 `--summary`: Tab-separated file with columns (`Variant_ID`, `Sample_Count`, `Score`, `Sensitivity`, `Sample_IDs`, `SVTYPE`) <br>
 `--known_ids`: IDs of SVs detected in previous callsets (Comparison strategy can refer to *Section: Variant annotation and comparison to external datasets* in the Supplementary file.) `
 
@@ -48,9 +47,6 @@ python run_eqtl.py \
   --out-pairs eQTL_result.csv \
   --out-bh eQTL_result.bh.csv
 ```
-Input<br>
 - `--geno`: SV genotypes for each sample (e.g., `1|1`, `0|1`), in with comma-seperated format with columns: `VariantID`, `Sample1`, `Sample2`, ...
-
 - `--expr`: Gene expression matrix, in comma-seperated format with columns: `gene`, `Sample1`, `Sample2`, ...
-
 - `--covar`: Sample covariate file, in comma-delimited format with columns: `id`, `Sample1`, `Sample2`, ...
