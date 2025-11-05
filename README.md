@@ -18,12 +18,13 @@ python plot_cadd_sv.py   --cadd SV_CADD.score.bed   --summary SV_summary.txt   -
 `--known_ids`: IDs of SVs detected in previous callsets (Comparison strategy can refer to *Section: Variant annotation and comparison to external datasets* in the Supplementary file.) `
 
 
-### SV-eQTL ###
+### eQTL mapping ###
 - **Cohort:**  
 Matched DNA-seq and RNA-seq data from 731 1KG individuals, representing 26 globally distributed populations across five continents.
 
 - **Genotypes:**  
 SVs were genotyped and imputed into 1KG samples using KAGE and GLIMPSE to obtain high-quality, population-consistent genotype calls.
+SNPs genotype data are available from: [https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20201028_3202_phased/](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20201028_3202_phased/)
 
 - **Expression:**  
 The expression file `inverse_normal_TMM.filtered.TSS.MAGE.v1.0.bed.gz` contains TMM-normalized expression values transformed to a normal distribution.
@@ -36,14 +37,14 @@ Both expression and covariate files are available from the MAGE project([https:/
 
 #### eQTL 
 ```bash
-bedtools window -w 1000000 -a Imputation_SV.vcf.gz -b gene_annotation.bed |awk 'BEGIN{print "SV,gene"}{print $3","$NF}' > SV_gene_1Mb
+bedtools window -w 1000000 -a variant.vcf.gz -b gene_annotation.bed |awk 'BEGIN{print "SV,gene"}{print $3","$NF}' > variant_gene_1Mb
 ```
 ```bash
 python run_eqtl.py \
   --geno genotypes.csv \
   --expr TMM_expression.csv \
   --covar covariates.csv \
-  --pairs SV_gene_1Mb \
+  --pairs variant_gene_1Mb \
   --out-pairs eQTL_result.csv \
   --out-bh eQTL_result.bh.csv
 ```
