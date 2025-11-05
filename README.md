@@ -42,11 +42,17 @@ bedtools window -w 1000000 -a Imputation_SV.vcf.gz -b gene_annotation.bed |awk '
 python run_eqtl.py \
   --geno genotypes.csv \
   --expr TMM_expression.csv \
-  --covar covariates.txt \
+  --covar covariates.csv \
   --pairs SV_gene_1Mb \
   --out-pairs eQTL_result.csv \
   --out-bh eQTL_result.bh.csv
 ```
-- `--geno`: SV genotypes for each sample (e.g., `1|1`, `0|1`), in with comma-seperated format with columns: `VariantID`, `Sample1`, `Sample2`, ...
-- `--expr`: Gene expression matrix, in comma-seperated format with columns: `gene`, `Sample1`, `Sample2`, ...
-- `--covar`: Sample covariate file, in comma-delimited format with columns: `id`, `Sample1`, `Sample2`, ...
+- `--geno`: SV genotypes for each sample (e.g., `1|1`, `0|1`), with columns: `VariantID`, `Sample1`, `Sample2`, ...
+- `--expr`: Gene expression matrix, with columns: `gene`, `Sample1`, `Sample2`, ...
+- `--covar`: Sample covariate file, with columns: `id`, `Sample1`, `Sample2`, ...
+```bash
+
+```
+
+#### Fine-mapping 
+
