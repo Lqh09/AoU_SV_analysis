@@ -1,6 +1,6 @@
 # AoU_SV_analysis
 ## Project Overview
-This project investigates the functional and clinical relevance of structural variants (SVs) identified from long-read sequencing data in the All of Us Research Program. To evaluate their broader impact, these variants were imputed into both the 1000 Genomes Project and short-read AoU cohorts. Integration with RNA-seq and electronic health record (EHR) data enabled downstream analyses, such as eQTL mapping, linkage disequilibrium (LD) with GWAS variants, and phenome-wide association studies (PheWAS), to comprehensively characterize the regulatory and disease-related effects of variants.
+This project investigates the functional and clinical relevance of structural variants (SVs) identified from long-read sequencing data in the All of Us (AoU) Research Program. To evaluate their broader impact, these variants were imputed into both the 1000 Genomes Project and short-read AoU cohorts. Integration with RNA-seq and electronic health record (EHR) data enabled downstream analyses, such as eQTL mapping, linkage disequilibrium (LD) with GWAS variants, and phenome-wide association studies (PheWAS), to comprehensively characterize the regulatory and disease-related effects of variants.
 
 ### Score the effect of SVs ###
 #### CADD-SV annotation
@@ -20,6 +20,24 @@ Input<br>
 
 
 ### SV-eQTL ###
+This analysis integrates **SV genotypes** and **gene expression (RNA-seq)** data across a globally diverse cohort.
+- **Cohort:**  
+  Matched DNA-seq and RNA-seq data from **731 individuals**, representing **26 globally distributed populations** across **five continents**.
 
+- **Genotyping:**  
+  SVs were genotyped and imputed into **1KG samples** to ensure consistent representation across populations.
 
+- **Expression Data:**  
+  The expression file `inverse_normal_TMM.filtered.TSS.MAGE.v1.0.bed.gz` contains **TMM-normalized expression values transformed to a normal distribution**.
+
+- **Covariates:**  
+  The corresponding covariate file is `eQTL_covariates.tab.gz`.
+
+- **Data Source:**  
+  Both expression and covariate files are available from the **MAGE project**  
+  ([https://github.com/mccoy-lab/MAGE](https://github.com/mccoy-lab/MAGE))  
+  and described in the publication:  
+  *MAGE: Multi-Ancestry Gene Expression Resource*, *Nature* (2024), [https://doi.org/10.1038/s41586-024-07708-2](https://doi.org/10.1038/s41586-024-07708-2)
+
+Sample 
 
