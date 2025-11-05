@@ -16,7 +16,7 @@ python plot_cadd_sv.py   --cadd SV_CADD.score.bed   --summary SV_summary.txt   -
 ```
 Input
 --summary SV_summary.txt 
-** Tab-separated file with columns. ** 
+- ** Tab-separated file with columns. ** 
 | Variant_ID | Sample_Count | Score | Sensitivity | Sample_IDs | SVTYPE |
 |------------|--------------|-------|-------------|------------|--------|
 
