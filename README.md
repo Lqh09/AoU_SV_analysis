@@ -15,7 +15,7 @@ Usage
 python plot_cadd_sv.py   --cadd SV_CADD.score.bed   --summary SV_summary.txt   --known_ids LR_match_IDs   --output Cadd_SV_sample_summary.png
 ```
 Input<br>
-`--summary`: Tab-separated file with columns (`Variant_ID`, `Sample_Count`, `Score`, `Sensitivity`, `Sample_IDs`, `SVTYPE`)
+`--summary`: Tab-separated file with columns (`Variant_ID`, `Sample_Count`, `Score`, `Sensitivity`, `Sample_IDs`, `SVTYPE`) <br>
 `--known_ids`: IDs of SVs detected in previous callsets (Comparison strategy can refer to *Section: Variant annotation and comparison to external datasets* in the Supplementary file.) `
 
 
