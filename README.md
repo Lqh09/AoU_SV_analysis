@@ -8,7 +8,10 @@ CADD-SV annotation
 conda activate run.caddsv
 snakemake  --use-conda --configfile config.yml -j 4 -n
 grep -v CADD-SV_PHRED-score CADD_output.bed |awk '{OFS="\t"}{print "chr"$1, $2, $3, $5"|"$4"|"$6}' > SV_CADD.score.bed
-```bash
+```
+Distribution of CADD-SV score for shared SVs in the AoU strict cohort
+
+
 
 ### SV-eQTL ###
 
