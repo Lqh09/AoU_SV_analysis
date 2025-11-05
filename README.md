@@ -32,12 +32,12 @@ The expression file `inverse_normal_TMM.filtered.TSS.MAGE.v1.0.bed.gz` contains 
 - **Covariates:**  
 The corresponding covariate file is `eQTL_covariates.tab.gz`.
 
-**Data source:**  
+- **Data source:**  
 Both expression and covariate files are available from the MAGE project([https://github.com/mccoy-lab/MAGE](https://github.com/mccoy-lab/MAGE))  
 
 #### eQTL 
 ```bash
-bedtools window -w 1000000 -a Imputation_SV.vcf.gz -b gene_annotation.bed |awk '{print $3","$NF}' > SV_gene_1Mb
+bedtools window -w 1000000 -a Imputation_SV.vcf.gz -b gene_annotation.bed |awk 'BEGIN{print "SV,gene"}{print $3","$NF}' > SV_gene_1Mb
 ```
 ```bash
 python run_eqtl.py \
@@ -48,3 +48,9 @@ python run_eqtl.py \
   --out-pairs eQTL_result.csv \
   --out-bh eQTL_result.bh.csv
 ```
+Input<br>
+- `--geno`: SV genotypes for each sample (e.g., `1|1`, `0|1`), in with comma-seperated format with columns: `VariantID`, `Sample1`, `Sample2`, ...
+
+- `--expr`: Gene expression matrix, in comma-seperated format with columns: `gene`, `Sample1`, `Sample2`, ...
+
+- `--covar`: Sample covariate file, in comma-delimited format with columns: `id`, `Sample1`, `Sample2`, ...
