@@ -20,10 +20,10 @@ Input<br>
 
 
 ### SV-eQTL ###
-- **Cohort:**  
+**Cohort:**  
   Matched DNA-seq and RNA-seq data from 731 individuals, representing 26 globally distributed populations across five continents.
 
-- **Genotyping:**  
+**Genotyping:**  
   SVs were genotyped and imputed into 1KG samples to ensure consistent representation across populations.
 
 - **Expression data:**  
