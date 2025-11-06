@@ -36,20 +36,25 @@ The corresponding covariate file is `eQTL_covariates.tab.gz`.
 Both expression and covariate files are available from the MAGE project([https://github.com/mccoy-lab/MAGE](https://github.com/mccoy-lab/MAGE))  
 
 #### eQTL 
+##### Generate SV–gene pairs within 1 Mb
 ```bash
 bedtools window -w 1000000 -a variant.vcf.gz -b gene_annotation.bed |awk 'BEGIN{print "SV,gene"}{print $3","$NF}' > variant_gene_1Mb
 ```
-```bash
-python run_eqtl.py  --geno genotypes.csv  --expr TMM_expression.csv    --covar covariates.csv    --pairs variant_gene_1Mb  --out-pairs eQTL_result.csv  --out-bh eQTL_result.bh.csv
-```
+##### Run eQTL analysis
+`run_eqtl.py` 
 - `--geno`: SV genotypes for each sample (e.g., `1|1`, `0|1`), with columns: `VariantID`, `Sample1`, `Sample2`, ...
 - `--expr`: Gene expression matrix, with columns: `gene`, `Sample1`, `Sample2`, ...
 - `--covar`: Sample covariate file, with columns: `id`, `Sample1`, `Sample2`, ...
-```bash
-python eQTL_summary.py --eqtl eQTL_result.csv --eqtl_bh eQTL_result.bh.csv --gene-name gene_name.txt --gene-list OMIM_genes.txt --out-png eQTL_summary.png
-``` 
+- `--pairs` List of SV–gene pairs (e.g., variant_gene_1Mb)
+- `---out-pairs`: Raw association results for each SV–gene pair
+- `--out-bh`: Benjamini–Hochberg FDR–corrected results
+##### Visualize eQTL results
+`eQTL_summary.py` 
+- `--eqtl`: Raw eQTL results (`eQTL_result.csv`)
+- `--eqtl_bh`: FDR-corrected results (`eQTL_result.bh.csv`)
 - `--gene-name`: Tab-delimited file mapping gene IDs to gene names.
 - `--gene-list`: Medically relevant gene names.   
-
+- `--out-png`: Figure summarizing eQTL findings
+  
 #### Fine-mapping 
 
