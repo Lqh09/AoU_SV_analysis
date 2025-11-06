@@ -75,7 +75,27 @@ bedtools window -w 1000000 -a variant.vcf.gz -b gene_annotation.bed |awk 'BEGIN{
 `Manhattan_plot.py`: Generates Manhattan plots for *BID*. The genotype and eQTL significance files follow the same format as `caviar_inputs.py`, but include data for the selected gene only to improve computational efficiency.
 
 
-### SVs in LD with GWAS-significant SNVs  ###
+### SVs in LD with GWAS-significant SNPs  ###
+- **SNVs & trait from GWAS catalog**
+Extract genome-wide significant variants and their associated traits from GWAS Catalog v1.0 ([[https://www.ebi.ac.uk/gwas/](https://www.ebi.ac.uk/gwas/docs/file-downloads)](https://www.ebi.ac.uk/gwas/docs/file-downloads)) and convert them into a BED file with the following columns: `chromosome`,`SNP_start`,`SNP_end`,`variantID|MappedGene|Trait|P-value|RiskAllele`
 
+- **SV genotypes:**  
+  AoU SVs imputed using 2,504 unrelated 1KG samples.
 
+- **SNP genotypes:**  
+  Extracted from the same 1000 Genomes samples:  
+  [https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20201028_3202_phased/](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20201028_3202_phased/)
+
+#### Identify SVs Near GWAS-Significant SNPs
+```bash
+bedtools window -a SV_1KG_imputed.vcf.gz -b GWAS_snps.bed.gz -w 100000| awk -F"\t" '{print $3"\t"$NF}' | sort | uniq > SVs_near_GWAS_SNPs_100kb.txt
+```
+
+##### LD calculation
+`LD_computation.py`: Computes linkage disequilibrium (r²) between nearby SV–SNP pairs.
+- `--sv-gt`: SV genotypes for each sample (0 = homozygous reference, 1 = heterozygous, 2 = homozygous alternate), with columns: `VariantID`, `Sample1`, `Sample2`, ...
+- `--sbp-gt`: SNP genotypes for each sample (0 = homozygous reference, 1 = heterozygous, 2 = homozygous alternate), with columns: `VariantID`, `Sample1`, `Sample2`, ...
+- `--pairs`: SV-SNP pairs(e.g., `SVs_near_GWAS_SNPs_100kb.txt`).
+- `--out-pairs-ld`: SV–SNP pairs with calculated LD (r²) values.
+  
 ### Phenome-wide SV analysis ###
