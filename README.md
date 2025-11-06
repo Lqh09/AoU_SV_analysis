@@ -37,7 +37,7 @@ bedtools intersect -a SV_genotype.vcf.gz  -b CDS_annotation.bed  -wao |awk '{OFS
 ```bash
 bedtools intersect -a SV_genotype.vcf.gz  -b regulatory_element_annotation.bed  -wao |awk '{OFS="\t"}{if($NF!=0) print $1, $2, $3, $(NF-3), $(NF-2), $(NF-1)}'  |sort |uniq > SV_regulatory_element_ID.txt
 ```
-`regulatory_element_upset.py`: UpSet plot of regulatory elements overlapping SVs across the five continental groups.
+`regulatory_element_upset.py`: UpSet plot of regulatory elements overlapping SVs across five continental groups.
 
 #### African vs. Non-African comparisons
 `AF comparions.py`: Comparison of SV allele frequencies between African and non-African samples. <br>
