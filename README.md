@@ -17,7 +17,7 @@ grep -v CADD-SV_PHRED-score CADD_output.bed |awk '{OFS="\t"}{print "chr"$1, $2, 
 
 ### Population-scale SV analysis
 - **Samples:**
-2,540 unrelated 1000 Genomes Project(1KGP) samples
+2,540 unrelated 1000 Genomes Project (1KGP) samples
  
 - **Genotypes:**
 SVs genotyped and imputed into 1KG samples using KAGE and GLIMPSE to obtain high-quality callset.
