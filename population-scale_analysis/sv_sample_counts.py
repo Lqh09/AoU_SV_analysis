@@ -1,7 +1,7 @@
 import gzip
 import pandas as pd
 
-input_file = 'SV_genotype.stats.gz''
+input_file = 'SV_genotype.stats.gz'
 output_file = 'SV_summary.txt'
 population_file = '1KG_population' # Sample_name\tSuperpopulation_code,from https://www.internationalgenome.org/data/
 
