@@ -10,13 +10,10 @@ snakemake  --use-conda --configfile config.yml -j 4 -n
 grep -v CADD-SV_PHRED-score CADD_output.bed |awk '{OFS="\t"}{print "chr"$1, $2, $3, $5"|"$4"|"$6}' > SV_CADD.score.bed
 ```
 #### Distribution of CADD-SV score for shared SVs in the AoU strict cohort
-Usage
-```bash
-python plot_cadd_sv.py   --cadd SV_CADD.score.bed   --summary SV_summary.txt   --known_ids LR_match_IDs   --output Cadd_SV_sample_summary.png
-```
-`--summary`: Tab-separated file with columns (`Variant_ID`, `Sample_Count`, `Score`, `Sensitivity`, `Sample_IDs`, `SVTYPE`) <br>
-`--known_ids`: IDs of SVs detected in previous callsets (Comparison strategy can refer to *Section: Variant annotation and comparison to external datasets* in the Supplementary file.) `
-
+`plot_cadd_sv.py` 
+- `--cadd`: CADD results (`SV_CADD.score.bed`)
+- `--summary`: Tab-separated file with columns (`Variant_ID`, `Sample_Count`, `Score`, `Sensitivity`, `Sample_IDs`, `SVTYPE`) <br>
+- `--known_ids`: IDs of SVs detected in previous callsets (Comparison strategy can refer to *Section: Variant annotation and comparison to external datasets* in the Supplementary file.) `
 
 ### eQTL mapping ###
 - **Cohort:**  
