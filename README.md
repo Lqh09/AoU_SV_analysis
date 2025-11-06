@@ -15,12 +15,46 @@ grep -v CADD-SV_PHRED-score CADD_output.bed |awk '{OFS="\t"}{print "chr"$1, $2, 
 - `--summary`: Tab-separated file with columns (`Variant_ID`, `Sample_Count`, `Score`, `Sensitivity`, `Sample_IDs`, `SVTYPE`) <br>
 - `--known_ids`: IDs of SVs detected in previous callsets (Comparison strategy can refer to *Section: Variant annotation and comparison to external datasets* in the Supplementary file.) `
 
+### Population-scale SV analysis ###
+- **Samples:  **
+2,540 unrelated 1000 Genomes Project(1KGP) samples
+ 
+- **Genotypes:**  
+SVs were genotyped and imputed into 1KG samples using KAGE and GLIMPSE to obtain high-quality genotype calls.
+
+#### SV summary
+`stats.sh`: Extract SV information from VCF file
+`sv_sample_counts.py.py`: Number of sample per SVs and in which populations
+'sv_count_per_sample.py':  Number of imputed AoU LRS SVs per participant and plotviolin plot showing the number of SVs per samples across five continental population groups 
+
+#### Gene intersection
+```bash
+bedtools intersect -a SV_genotype.vcf.gz  -b CDS_annotation.bed  -wao |awk '{OFS="\t"}{if($NF!=0) print $1, $2, $3, $(NF-3), $(NF-2), $(NF-1)}'  |sort |uniq > SV_CDS_ID.txt
+```
+`Gene_upset.py`: Number of protein-coding genes where coding regions intersected by an SV across the five continental groups in 1KGP.
+
+#### regulatory element
+```bash
+bedtools intersect -a SV_genotype.vcf.gz  -b regulatory_element_annotation.bed  -wao |awk '{OFS="\t"}{if($NF!=0) print $1, $2, $3, $(NF-3), $(NF-2), $(NF-1)}'  |sort |uniq > SV_regulatory_element_ID.txt
+```
+`regulatory_element_upset.py`: Number of protein-coding genes where coding regions intersected by an SV across the five continental groups in 1KGP.
+
+#### African vs. Non-African
+`AF comparions.py`: AF comparion bettwen African and Non-africans
+
+Fst computation: genetic differentiation between Africans and non-Africans
+```bash
+vcftools --gzvcf SV_genotype.vcf.g --weir-fst-pop AFR_samples --weir-fst-pop Otherpop_samples --out AFR_vs_nonAFR
+```
+`Fst_distribution.py`: SV distribution as a funciton of Fst. histogram of Fst: SV distribution as a funciton of Fst.
+
+
 ### eQTL mapping ###
 - **Cohort:**  
 Matched DNA-seq and RNA-seq data from 731 1KG individuals, representing 26 globally distributed populations across five continents.
 
 - **Genotypes:**  
-SVs were genotyped and imputed into 1KG samples using KAGE and GLIMPSE to obtain high-quality, population-consistent genotype calls.
+AoU SVs genotyped and imputed using KAGE and Glimpse.
 SNPs genotype data are available from: [https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20201028_3202_phased/](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20201028_3202_phased/)
 
 - **Expression:**  
@@ -35,7 +69,7 @@ Both expression and covariate files are available from the MAGE project([https:/
 #### eQTL 
 ##### Generate SV–gene pairs within 1 Mb
 ```bash
-bedtools window -w 1000000 -a variant.vcf.gz -b gene_annotation.bed |awk 'BEGIN{print "SV,gene"}{print $3","$NF}' > variant_gene_1Mb
+bedtools window -w 1000000 -a SV_genotype.vcf.gz -b gene_annotation.bed |awk 'BEGIN{print "SV,gene"}{print $3","$NF}' > SV_gene_1Mb
 ```
 ##### Run eQTL analysis
 `run_eqtl.py` 
