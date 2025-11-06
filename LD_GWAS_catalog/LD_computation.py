@@ -49,7 +49,7 @@ def compute_ld_dict(sv_genotypes, snp_genotypes, gwas_pairs):
     return ld_dict
 
 
-def filter_pairs_by_ld(pairs_file, ld_dict, out_file, ld_threshold):
+def filter_pairs_by_ld(pairs_file, ld_dict, out_file):
     with open(pairs_file, "r") as in_f, open(out_file, "w", newline="") as out_f:
         reader = csv.reader(in_f, delimiter="\t")
         writer = csv.writer(out_f, delimiter="\t")
@@ -59,7 +59,7 @@ def filter_pairs_by_ld(pairs_file, ld_dict, out_file, ld_threshold):
             sv_id = row[0]
             snp_id = row[1].split("|")[0]
             ld_value = ld_dict.get((sv_id, snp_id), np.nan)
-            if not np.isnan(ld_value) and ld_value >= ld_threshold:
+            if not np.isnan(ld_value) and ld_value >= 0.5:
                 writer.writerow(row + [f"{ld_value}"])
 
 
@@ -71,7 +71,7 @@ def run(args):
     snp_genotypes = snp_genotypes[common_samples]
     gwas_pairs = load_gwas_pairs(args.pairs)
     ld_dict = compute_ld_dict(sv_genotypes, snp_genotypes, gwas_pairs)
-    filter_pairs_by_ld(args.pairs, ld_dict, args.out_pairs_ld, args.ld_threshold)
+    filter_pairs_by_ld(args.pairs, ld_dict, args.out_pairs_ld)
 
 
 def main():
@@ -80,7 +80,6 @@ def main():
     parser.add_argument("--snp-gt", dest="snp_gt", default="SNP_genotype.tsv.gz")
     parser.add_argument("--pairs", dest="pairs", default="1KGP_GWAS_IDs_100K")
     parser.add_argument("--out-pairs-ld", dest="out_pairs_ld", default="1KGP_GWAS_IDs_LD_100K")
-    parser.add_argument("--ld-threshold", dest="ld_threshold", type=float, default=0.5)
     args = parser.parse_args()
     run(args)
 
