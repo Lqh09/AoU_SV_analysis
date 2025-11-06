@@ -106,7 +106,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--sv-z",dest="sv_zscore",default="eQTL_SV_zscore.txt")
     parser.add_argument("--sv-gt",dest="sv_genotype",default="SV_genotypes.txt")
-    parser.add_argument("--snp-z",dest="snp_zscore",default="eQTL_SNP_zscore.txt.txt.gz")
+    parser.add_argument("--snp-z",dest="snp_zscore",default="eQTL_SNP_zscore.txt.gz")
     parser.add_argument("--snp-gt", dest="snp_genotype", default="SNP_genotypes.txt.gz")
     parser.add_argument("--out-dir", dest="out_dir", default="caviar/")
     parser.add_argument("--top-kgp-snps", dest="top_kgp_snps", type=int,default=1000)
