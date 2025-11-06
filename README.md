@@ -86,16 +86,19 @@ Extract genome-wide significant variants and their associated traits from GWAS C
   Extracted from the same 1000 Genomes samples:  
   [https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20201028_3202_phased/](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20201028_3202_phased/)
 
-#### Identify SVs Near GWAS-Significant SNPs
+#### Identification of SVs near GWAS-significant SNPs
 ```bash
 bedtools window -a SV_1KG_imputed.vcf.gz -b GWAS_snps.bed.gz -w 100000| awk -F"\t" '{print $3"\t"$NF}' | sort | uniq > SVs_near_GWAS_SNPs_100kb.txt
 ```
 
 ##### LD calculation
 `LD_computation.py`: Computes linkage disequilibrium (r²) between nearby SV–SNP pairs.
-- `--sv-gt`: SV genotypes for each sample (0 = homozygous reference, 1 = heterozygous, 2 = homozygous alternate), with columns: `VariantID`, `Sample1`, `Sample2`, ...
-- `--sbp-gt`: SNP genotypes for each sample (0 = homozygous reference, 1 = heterozygous, 2 = homozygous alternate), with columns: `VariantID`, `Sample1`, `Sample2`, ...
+- `--sv-gt`: SV genotypes for each sample (`0` = homozygous reference, `1` = heterozygous, `2` = homozygous alternate), with columns: `VariantID`, `Sample1`, `Sample2`, ...
+- `--sbp-gt`: SNP genotypes for each sample (`0` = homozygous reference, `1` = heterozygous, `2` = homozygous alternate), with columns: `VariantID`, `Sample1`, `Sample2`, ...
 - `--pairs`: SV-SNP pairs(e.g., `SVs_near_GWAS_SNPs_100kb.txt`).
 - `--out-pairs-ld`: SV–SNP pairs with calculated LD (r²) values.
-  
+
+##### Disease/disorder-related trait detection
+
+
 ### Phenome-wide SV analysis ###
