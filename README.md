@@ -65,7 +65,7 @@ bedtools window -w 1000000 -a variant.vcf.gz -b gene_annotation.bed |awk 'BEGIN{
 - `variant.list`: Ordered list of variant IDs used in the analysis.
             
 ##### Casual variant identification 
-
+`run_caviar.sh`: Processing all variant–gene pairs using the generated input files.
 
 ### SVs in LD with GWAS-significant SNVs  ###
 
