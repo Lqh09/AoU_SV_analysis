@@ -72,9 +72,8 @@ bedtools window -w 1000000 -a variant.vcf.gz -b gene_annotation.bed |awk 'BEGIN{
 - `--gene`: Gene ID in the SV–gene pair.
 - `--SV`: SV ID in the SV–gene pair.
 
-`Manhattan_plot.py`: Generates Manhattan plots for *BID*. The genotype and eQTL significance files follow the same format as `caviar_inputs.py`, but contain data for the selected gene only to improve runtime efficiency.
+`Manhattan_plot.py`: Generates Manhattan plots for *BID*. The genotype and eQTL significance files follow the same format as `caviar_inputs.py`, but include data for the selected gene only to improve computational efficiency.
 
-###### manhanton plot
 
 ### SVs in LD with GWAS-significant SNVs  ###
 
