@@ -149,4 +149,4 @@ bedtools window -a SV_1KG_imputed.vcf.gz -b GWAS_snps.bed.gz -w 100000| awk -F"\
 `LD_heatmap_compuation.py`: Heatmap showing LD patterns (r²) between an SV and surrounding SNPs from the GWAS catalog.
 
 ### Note
-EHR-related codes (like PheWAS) are available in the All of Us Researcher Workbench, as EHR data are part of the Controlled Tier.
+EHR-related codes (e.g., PheWAS) are available in the All of Us Researcher Workbench. Related Jupyter notebooks (`.ipynb`) can be found in the [long-reads-public-codebase](https://github.com/all-of-us/long-reads-public-codebase/tree/main/notebooks/rw/) repository.
