@@ -60,12 +60,20 @@ bedtools window -w 1000000 -a variant.vcf.gz -b gene_annotation.bed |awk 'BEGIN{
 - `--sv-gt`: SV genotype file with columns: `VariantID`, `Sample1`, `Sample2`, ...
 - `--snp-z`: SNP-eQTL summary statistics with columns: `VariantID`, `GeneID`, `Zscore`, `pscore`, `pos`.
 - `--snp-gt`: SNP genotype file with columns: `VariantID`, `Sample1`, `Sample2`, ...
-- `variant.zscore`: Variant IDs and corresponding Z-scores (space-separated).  
-- `variant.ld`: Linkage disequilibrium (LD) r² matrix.  
+- `variant.zscore`: Variant IDs and corresponding zscores.  
+- `variant.ld`: LD r² matrix.  
 - `variant.list`: Ordered list of variant IDs used in the analysis.
             
 ##### Casual variant identification 
 `run_caviar.sh`: Processing all variant–gene pairs using the generated input files.
+
+##### Statisticta plot
+###### Relationship between genotypes and gene expression  
+`Genotypes_expression.py` 
+- `--gene`: Gene ID in the SV–gene pair.
+- `--SV`: SV ID in the SV–gene pair.
+
+###### manhanton plot
 
 ### SVs in LD with GWAS-significant SNVs  ###
 
