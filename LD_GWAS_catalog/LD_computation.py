@@ -79,7 +79,7 @@ def main():
     parser.add_argument("--sv-gt", dest="sv_gt", default="SV_genotype.tsv")
     parser.add_argument("--snp-gt", dest="snp_gt", default="SNP_genotype.tsv.gz")
     parser.add_argument("--pairs", dest="pairs", default="SVs_near_GWAS_SNPs_100kb.txt")
-    parser.add_argument("--out-pairs-ld", dest="out_pairs_ld", default="1KGP_GWAS_IDs_LD_100K")
+    parser.add_argument("--out-pairs-ld", dest="out_pairs_ld", default="1KGP_GWAS_IDs_LD_100K.txt")
     args = parser.parse_args()
     run(args)
 
