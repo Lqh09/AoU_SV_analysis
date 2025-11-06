@@ -77,7 +77,7 @@ bedtools window -w 1000000 -a variant.vcf.gz -b gene_annotation.bed |awk 'BEGIN{
 
 ### SVs in LD with GWAS-significant SNPs  ###
 - **SNVs & trait from GWAS catalog**
-Extract genome-wide significant variants and their associated traits from GWAS Catalog v1.0 ([[https://www.ebi.ac.uk/gwas/](https://www.ebi.ac.uk/gwas/docs/file-downloads)](https://www.ebi.ac.uk/gwas/docs/file-downloads)) and convert them into a BED file with the following columns: `chromosome`,`SNP_start`,`SNP_end`,`variantID|MappedGene|Trait|P-value|RiskAllele`
+Extract genome-wide significant variants and their associated traits from GWAS Catalog v1.0 ([https://www.ebi.ac.uk/gwas/](https://www.ebi.ac.uk/gwas/docs/file-downloads)](https://www.ebi.ac.uk/gwas/docs/file-downloads)) and convert them into a BED file with the following columns: `chromosome`,`SNP_start`,`SNP_end`,`variantID|MappedGene|Trait|P-value|RiskAllele`
 
 - **SV genotypes:**  
   AoU SVs imputed using 2,504 unrelated 1KG samples.
