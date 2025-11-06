@@ -114,5 +114,3 @@ bedtools window -a SV_1KG_imputed.vcf.gz -b GWAS_snps.bed.gz -w 100000| awk -F"\
 #####  LD heatmap visualization
 `Input_preparation.sh`: Prepare input genotype and variant information files for LD visualization.
 `LD_heatmap_compuation.py`: Heatmap showing LD patterns (r²) between an SV and surrounding SNPs from the GWAS catalog.
-
-### Phenome-wide SV analysis ###
