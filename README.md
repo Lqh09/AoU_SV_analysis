@@ -99,6 +99,9 @@ bedtools window -a SV_1KG_imputed.vcf.gz -b GWAS_snps.bed.gz -w 100000| awk -F"\
 - `--out-pairs-ld`: SV–SNP pairs with calculated LD (r²) values.
 
 ##### Disease/disorder-related trait detection
-
+`match_traits.py`
+- `--ref`: Reference list of disease and disorder terms from EMBL-EBI’s EFO ontology and condition-domain concepts from the SNOMED vocabulary.
+- `--gwas`: GWAS traits identified from SV–SNP pairs in LD.
+- `--out`: Output file with traits matched to disease/disorder terms.
 
 ### Phenome-wide SV analysis ###
