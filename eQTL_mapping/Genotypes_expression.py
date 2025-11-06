@@ -14,7 +14,6 @@ significant_eGenes_df = pd.read_csv('eQTL_result.bh.csv')
 genotypes_df = pd.read_csv('genotypes.csv', index_col=0)
 
 expression_df = pd.read_csv('TMM_expression.csv', index_col=0)
-#expression_df = pd.read_csv('filtered_exp.csv', index_col=0)
 gene_name_df = pd.read_csv('gene_name', sep='\t', header=None, names=['gene_id', 'gene_name'])
 gene_name_mapping = pd.Series(gene_name_df.gene_name.values, index=gene_name_df.gene_id).to_dict()
 
