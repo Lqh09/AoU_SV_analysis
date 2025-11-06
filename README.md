@@ -92,16 +92,27 @@ bedtools window -a SV_1KG_imputed.vcf.gz -b GWAS_snps.bed.gz -w 100000| awk -F"\
 ```
 
 ##### LD calculation
-`LD_computation.py`: Computes linkage disequilibrium (r²) between nearby SV–SNP pairs.
+`LD_computation.py`: Computes linkage disequilibrium (r²) between SV–SNP pairs.
 - `--sv-gt`: SV genotypes for each sample (`0` = homozygous reference, `1` = heterozygous, `2` = homozygous alternate), with columns: `VariantID`, `Sample1`, `Sample2`, ...
 - `--sbp-gt`: SNP genotypes for each sample (`0` = homozygous reference, `1` = heterozygous, `2` = homozygous alternate), with columns: `VariantID`, `Sample1`, `Sample2`, ...
 - `--pairs`: SV-SNP pairs(e.g., `SVs_near_GWAS_SNPs_100kb.txt`).
-- `--out-pairs-ld`: SV–SNP pairs with calculated LD (r²) values.
+- `--out-pairs-ld`: SV–SNP pairs with calculated LD (r²) values. 
 
 ##### Disease/disorder-related trait detection
 `match_traits.py`
-- `--ref`: Reference list of disease and disorder terms from EMBL-EBI’s EFO ontology and condition-domain concepts from the SNOMED vocabulary.
-- `--gwas`: GWAS traits identified from SV–SNP pairs in LD.
+- `--ref`: Reference list of disease and disorder terms from EMBL-EBI’s EFO ontology and SNOMED condition-domain vocabulary.
+- `--gwas`: GWAS trait file containing traits identified from SV–SNP pairs in linkage disequilibrium.
 - `--out`: Output file with traits matched to disease/disorder terms.
+ 
+##### Summary of SV-SNP assocaitions
+`assocaition_summary.py`
+- `--all`: All identified SV–SNP pairs.
+- `--genic`: Subset of pairs where SVs are located in trait-associated genes.
+- `--disease`: Traits matched to disease/disorder terms
+- `--out_fig`: Histogram showing the number of SVs in LD (r² ≥ 0.5) with GWAS SNPs.
+
+#####  LD heatmap visualization
+`Input_preparation.sh`: Prepare input genotype and variant information files for LD visualization.
+`LD_heatmap_compuation.py`: Heatmap showing LD patterns (r²) between an SV and surrounding SNPs from the GWAS catalog.
 
 ### Phenome-wide SV analysis ###
