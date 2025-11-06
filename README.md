@@ -54,4 +54,12 @@ bedtools window -w 1000000 -a variant.vcf.gz -b gene_annotation.bed |awk 'BEGIN{
 - `--out-png`: Figure summarizing eQTL findings
   
 #### Fine-mapping 
+##### Collect all eQTLs results for Caviar  
 
+##### Casual variant identification 
+
+
+### SVs in LD with GWAS-significant SNVs  ###
+
+
+### Phenome-wide SV analysis ###
