@@ -54,8 +54,16 @@ bedtools window -w 1000000 -a variant.vcf.gz -b gene_annotation.bed |awk 'BEGIN{
 - `--out-png`: Figure summarizing eQTL findings
   
 #### Fine-mapping 
-##### Collect all eQTLs results for Caviar  
-
+##### Generate CAVIAR input files
+`caviar_inputs.py`
+- `--sv-z`: SV-eQTL summary statistics with columns: `VariantID`, `GeneID`, `Zscore`, `pscore`, `pos`.
+- `--sv-gt`: SV genotype file with columns: `VariantID`, `Sample1`, `Sample2`, ...
+- `--snp-z`: SNP-eQTL summary statistics with columns: `VariantID`, `GeneID`, `Zscore`, `pscore`, `pos`.
+- `--snp-gt`: SNP genotype file with columns: `VariantID`, `Sample1`, `Sample2`, ...
+- `variant.zscore`: Variant IDs and corresponding Z-scores (space-separated).  
+- `variant.ld`: Linkage disequilibrium (LD) r² matrix.  
+- `variant.list`: Ordered list of variant IDs used in the analysis.
+            
 ##### Casual variant identification 
 
 
