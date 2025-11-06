@@ -102,11 +102,11 @@ def create_manhattan_plot(gene_name, chrom_label, sv_df, snp_df, sv_gt_dict, snp
     plt.tight_layout(); plt.savefig(out_png, dpi=600); plt.savefig(out_pdf, dpi=600, format="pdf"); plt.close(fig)
 
 
-sv_zscore_file = "eQTL_zscore.txt"
-snp_zscore_file = "1KG_zscore.txt.gz"
-sv_genotype_file = "MAGE_sig_genotypes.txt1"
-snp_genotype_file = "1KG_genotypes.txt1.gz"
-gene_bed_file = "../../data/genes.v38.bed.gz"
+sv_zscore_file = "eQTL_SV_zscore.BID.txt"
+snp_zscore_file = "eQTL_SNP_zscore.BID.txt.gz"
+sv_genotype_file = "SV_genotypes.BID.txt"
+snp_genotype_file = "SNP_genotypes.BID.txt.gz"
+gene_bed_file = "genes.bed.gz"
 exon_bed_file = "BID_exons.bed"
 gene_name = "ENSG00000015475.19"
 chrom_label = "chr22"
