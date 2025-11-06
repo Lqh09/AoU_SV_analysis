@@ -67,11 +67,12 @@ bedtools window -w 1000000 -a variant.vcf.gz -b gene_annotation.bed |awk 'BEGIN{
 ##### Casual variant identification 
 `run_caviar.sh`: Processing all variant–gene pairs using the generated input files.
 
-##### Statisticta plot
-###### Relationship between genotypes and gene expression  
-`Genotypes_expression.py` 
+##### Case study
+`Genotypes_expression.py`: Relationship between genotypes and gene expression for a specific pair
 - `--gene`: Gene ID in the SV–gene pair.
 - `--SV`: SV ID in the SV–gene pair.
+
+`Manhattan_plot.py`: Generates Manhattan plots for *BID*. The genotype and eQTL significance files follow the same format as `caviar_inputs.py`, but contain data for the selected gene only to improve runtime efficiency.
 
 ###### manhanton plot
 
