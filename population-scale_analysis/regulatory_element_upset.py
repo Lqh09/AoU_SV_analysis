@@ -5,7 +5,7 @@ from upsetplot import UpSet, from_indicators
 populations = ["EAS", "SAS", "AFR", "AMR", "EUR"]
 
 # Input files
-variants_df = pd.read_csv("SV_count_population.txt", sep="\t")
+variants_df = pd.read_csv("SV_summary.txt", sep="\t")
 sv_elements_df = pd.read_csv(
     "SV_regulatory_element_ID.txt",
     sep="\t",
