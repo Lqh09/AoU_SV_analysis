@@ -40,20 +40,14 @@ Both expression and covariate files are available from the MAGE project([https:/
 bedtools window -w 1000000 -a variant.vcf.gz -b gene_annotation.bed |awk 'BEGIN{print "SV,gene"}{print $3","$NF}' > variant_gene_1Mb
 ```
 ```bash
-python run_eqtl.py \
-  --geno genotypes.csv \
-  --expr TMM_expression.csv \
-  --covar covariates.csv \
-  --pairs variant_gene_1Mb \
-  --out-pairs eQTL_result.csv \
-  --out-bh eQTL_result.bh.csv
+python run_eqtl.py  --geno genotypes.csv  --expr TMM_expression.csv    --covar covariates.csv    --pairs variant_gene_1Mb  --out-pairs eQTL_result.csv  --out-bh eQTL_result.bh.csv
 ```
 - `--geno`: SV genotypes for each sample (e.g., `1|1`, `0|1`), with columns: `VariantID`, `Sample1`, `Sample2`, ...
 - `--expr`: Gene expression matrix, with columns: `gene`, `Sample1`, `Sample2`, ...
 - `--covar`: Sample covariate file, with columns: `id`, `Sample1`, `Sample2`, ...
-```bash
-
-```
+Summary of eQTL results `eQTL_summary.py` 
+- `--gene-name`: Tab-delimited file mapping gene IDs to gene names.
+- `--gene-list`: Medically relevant gene names.   
 
 #### Fine-mapping 
 
