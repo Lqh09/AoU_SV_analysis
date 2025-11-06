@@ -45,7 +45,9 @@ python run_eqtl.py  --geno genotypes.csv  --expr TMM_expression.csv    --covar c
 - `--geno`: SV genotypes for each sample (e.g., `1|1`, `0|1`), with columns: `VariantID`, `Sample1`, `Sample2`, ...
 - `--expr`: Gene expression matrix, with columns: `gene`, `Sample1`, `Sample2`, ...
 - `--covar`: Sample covariate file, with columns: `id`, `Sample1`, `Sample2`, ...
-##### Summary of eQTL results `eQTL_summary.py` 
+```bash
+python eQTL_summary.py --eqtl eQTL_result.csv --eqtl_bh eQTL_result.bh.csv --gene-name gene_name.txt --gene-list OMIM_genes.txt --out-png eQTL_summary.png
+``` 
 - `--gene-name`: Tab-delimited file mapping gene IDs to gene names.
 - `--gene-list`: Medically relevant gene names.   
 
