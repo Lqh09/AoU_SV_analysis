@@ -15,38 +15,40 @@ grep -v CADD-SV_PHRED-score CADD_output.bed |awk '{OFS="\t"}{print "chr"$1, $2, 
 - `--summary`: Tab-separated file with columns (`Variant_ID`, `Sample_Count`, `Score`, `Sensitivity`, `Sample_IDs`, `SVTYPE`) <br>
 - `--known_ids`: IDs of SVs detected in previous callsets (Comparison strategy can refer to *Section: Variant annotation and comparison to external datasets* in the Supplementary file.) `
 
-### Population-scale SV analysis ###
-- **Samples:  **
-2,540 unrelated 1000 Genomes Project(1KGP) samples
+### Population-scale SV analysis
+- **Samples:**
+- 2,540 unrelated 1000 Genomes Project(1KGP) samples
  
-- **Genotypes:**  
-SVs were genotyped and imputed into 1KG samples using KAGE and GLIMPSE to obtain high-quality genotype calls.
+- **Genotypes:**
+- SVs were genotyped and imputed into 1KG samples using KAGE and GLIMPSE to obtain high-quality callset.
 
 #### SV summary
-`stats.sh`: Extract SV information from VCF file
-`sv_sample_counts.py.py`: Number of sample per SVs and in which populations
-'sv_count_per_sample.py':  Number of imputed AoU LRS SVs per participant and plotviolin plot showing the number of SVs per samples across five continental population groups 
+`stats.sh`: SV summary statistics from the VCF file.
+`sv_sample_counts.py.py`: Number of samples per SV and the populations for each SV.
+'sv_count_per_sample.py':  Number of imputed AoU long-read SVs per participant and generates a violin plot illustrating the number of SVs per samples across five continental population groups 
 
 #### Gene intersection
+Protein-coding genes whose coding sequences (CDS) overlap with SVs.
 ```bash
 bedtools intersect -a SV_genotype.vcf.gz  -b CDS_annotation.bed  -wao |awk '{OFS="\t"}{if($NF!=0) print $1, $2, $3, $(NF-3), $(NF-2), $(NF-1)}'  |sort |uniq > SV_CDS_ID.txt
 ```
-`Gene_upset.py`: Number of protein-coding genes where coding regions intersected by an SV across the five continental groups in 1KGP.
+`Gene_upset.py`: Number of protein-coding genes where coding regions intersected by SVs across the five continental groups.
 
 #### regulatory element
+Regulatory elements overlapped by SVs.
 ```bash
 bedtools intersect -a SV_genotype.vcf.gz  -b regulatory_element_annotation.bed  -wao |awk '{OFS="\t"}{if($NF!=0) print $1, $2, $3, $(NF-3), $(NF-2), $(NF-1)}'  |sort |uniq > SV_regulatory_element_ID.txt
 ```
-`regulatory_element_upset.py`: Number of protein-coding genes where coding regions intersected by an SV across the five continental groups in 1KGP.
+`regulatory_element_upset.py`: Number of regulatory elements intersected by SVs across the five continental groups.
 
-#### African vs. Non-African
-`AF comparions.py`: AF comparion bettwen African and Non-africans
+#### African vs. Non-African comparisons
+`AF comparions.py`: Compares SV allele frequencies between African and non-African samples.
 
-Fst computation: genetic differentiation between Africans and non-Africans
+Fst computation: genetic differentiation between African and non-African groups.
 ```bash
 vcftools --gzvcf SV_genotype.vcf.g --weir-fst-pop AFR_samples --weir-fst-pop Otherpop_samples --out AFR_vs_nonAFR
 ```
-`Fst_distribution.py`: SV distribution as a funciton of Fst. histogram of Fst: SV distribution as a funciton of Fst.
+`Fst_distribution.py`: genome-wide F<sub>ST</sub> distribution.
 
 
 ### eQTL mapping ###
